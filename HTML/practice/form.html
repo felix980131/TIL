@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Practice</title>
+  </head>
+  <body>
+    <h1>Form Practice</h1>
+    <form action="tacos">
+      <div>
+        <label for="username">Enter a Username: </label>
+        <input
+          id="username"
+          type="text"
+          placeholder="username"
+          name="username"
+        />
+      </div>
+      <div>
+        <label for="password">Enter a Password: </label>
+        <input
+          id="password"
+          type="password"
+          placeholder="password"
+          name="password"
+        />
+      </div>
+      <div>
+        <label for="color">Enter a Color: </label>
+        <input id="color" type="color" name="color" />
+      </div>
+      <div>
+        <label for="number">Enter a Number: </label>
+        <input id="number" type="number" name="number" />
+      </div>
+      <div>
+        <input type="checkbox" name="agree" id="agree" />
+        <label for="agree">Agree to everything</label>
+      </div>
+      <div>
+        <label for="xs">XS: </label>
+        <input type="radio" name="size" id="xs" value="xs" />
+        <label for="s">S: </label>
+        <input type="radio" name="size" id="s" value="s" />
+        <label for="m">M: </label>
+        <input type="radio" name="size" id="m" value="m" />
+      </div>
+      <select name="meal" id="meal">
+        <option value="fist" selected>Fish</option>
+        <option value="veg">Vegetarian</option>
+        <option value="steak">Steak</option>
+      </select>
+
+      <button>Submit</button>
+      <button type="button">PLEASE DO NOT SUMBIT THE FORM</button>
+      <input type="submit" value="Submit" />
+      <input type="button" value="PLEASE DO NOT SUMBIT THE FORM" />
+    </form>
+  </body>
+</html>
