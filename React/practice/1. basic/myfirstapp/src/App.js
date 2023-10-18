@@ -1,22 +1,16 @@
 import "./App.css";
-
-function Hello() {
-  return <h1>Hello World</h1>;
-}
-
-function Dog() {
-  return <h2>I am Dog</h2>;
-}
+import Hello from "./Hello";
+import Dog from "./Dog";
+import Die from "./Die";
 
 function App() {
   return (
     <div className="App">
       <Hello />
-      <Hello />
-      <Hello />
       <Dog />
-      <Hello />
-      <Hello />
+      <Die />
+      <Die />
+      <Die />
     </div>
   );
 }
