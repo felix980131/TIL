@@ -3,7 +3,7 @@ import DiceRolls from "./DiceRolls";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App Die">
       <DiceRolls />
       <DiceRolls />
     </div>

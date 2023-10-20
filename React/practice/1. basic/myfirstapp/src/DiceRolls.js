@@ -1,8 +1,9 @@
 import Die from "./Die";
+import "./DieRoll.css";
 
 function DiceRolls() {
   return (
-    <div>
+    <div className="DieRoll">
       <h1>Dice Roll</h1>
       <Die />
       <Die />
