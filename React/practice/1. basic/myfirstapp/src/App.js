@@ -6,7 +6,7 @@ function App() {
     <div className="App Die">
       <Die numSize={20} />
       <Die numSize={15} />
-      <Die numSize={6} />
+      <Die />
     </div>
   );
 }
