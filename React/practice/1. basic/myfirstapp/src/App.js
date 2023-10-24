@@ -1,11 +1,10 @@
 import "./App.css";
-import Heading from "./Heading";
+import ColorList from "./ColorList";
 
 function App() {
   return (
     <div className="App Die">
-      <Heading text="Hello" />
-      <Heading color="red" text="World" />
+      <ColorList colors={["red", "blue", "green"]} />
     </div>
   );
 }
