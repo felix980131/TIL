@@ -1,12 +1,12 @@
 import "./App.css";
-import Hello from "./Hello";
+import Die from "./Die";
 
 function App() {
   return (
     <div className="App Die">
-      <Hello person="Felix" from="Colt" />
-      <Hello person="Siri" from="Colt" />
-      <Hello person="Rosa" from="Colt" />
+      <Die numSize={20} />
+      <Die numSize={15} />
+      <Die numSize={6} />
     </div>
   );
 }
