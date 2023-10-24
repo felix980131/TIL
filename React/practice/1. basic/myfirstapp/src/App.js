@@ -1,12 +1,11 @@
 import "./App.css";
-import Die from "./Die";
+import ListPicker from "./ListPicker";
 
 function App() {
   return (
     <div className="App Die">
-      <Die numSize={20} />
-      <Die numSize={15} />
-      <Die />
+      <ListPicker values={[1, 2, 3]} />
+      <ListPicker values={["a", "b", "c", "d"]} />
     </div>
   );
 }
