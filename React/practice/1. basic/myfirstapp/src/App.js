@@ -4,9 +4,9 @@ import Hello from "./Hello";
 function App() {
   return (
     <div className="App Die">
-      <Hello person="Felix" />
-      <Hello person="Siri" />
-      <Hello person="Rosa" />
+      <Hello person="Felix" from="Colt" />
+      <Hello person="Siri" from="Colt" />
+      <Hello person="Rosa" from="Colt" />
     </div>
   );
 }
