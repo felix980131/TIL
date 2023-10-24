@@ -1,12 +1,11 @@
 import "./App.css";
-import DoubleDice from "./DoubleDice";
+import Heading from "./Heading";
 
 function App() {
   return (
     <div className="App Die">
-      <DoubleDice />
-      <DoubleDice />
-      <DoubleDice />
+      <Heading text="Hello" />
+      <Heading color="red" text="World" />
     </div>
   );
 }
