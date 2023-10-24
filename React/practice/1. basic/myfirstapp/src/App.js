@@ -1,11 +1,12 @@
 import "./App.css";
-import DiceRolls from "./DiceRolls";
+import Hello from "./Hello";
 
 function App() {
   return (
     <div className="App Die">
-      <DiceRolls />
-      <DiceRolls />
+      <Hello person="Felix" />
+      <Hello person="Siri" />
+      <Hello person="Rosa" />
     </div>
   );
 }
