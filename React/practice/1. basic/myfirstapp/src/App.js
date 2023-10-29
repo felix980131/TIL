@@ -1,10 +1,10 @@
 import "./App.css";
-import Toggler from "./Toggler";
+import TogglerCounter from "./TogglerCounter";
 
 function App() {
   return (
     <div className="App Die">
-      <Toggler />
+      <TogglerCounter />
     </div>
   );
 }
