@@ -1,11 +1,11 @@
 import "./App.css";
-import ScoreKeeper from "./ScoreKeeper";
+import EmojiClicker from "./EmojiClicker";
 
 function App() {
   return (
     <div className="App">
       <h1>State Demo</h1>
-      <ScoreKeeper />
+      <EmojiClicker />
     </div>
   );
 }
