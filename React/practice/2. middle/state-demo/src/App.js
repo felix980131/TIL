@@ -1,11 +1,11 @@
 import "./App.css";
-import Dumbo from "./Dumbo";
+import ScoreKeeper from "./ScoreKeeper";
 
 function App() {
   return (
     <div className="App">
       <h1>State Demo</h1>
-      <Dumbo />
+      <ScoreKeeper />
     </div>
   );
 }
