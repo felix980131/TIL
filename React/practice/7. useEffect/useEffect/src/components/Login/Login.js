@@ -12,9 +12,20 @@ const Login = (props) => {
   const [formIsValid, setFormIsValid] = useState(false);
 
   useEffect(() => {
-    setFormIsValid(
-      enteredEmail.includes("@") && enteredPassword.trim().length > 6
-    );
+    // 500밀리초 타이머 설정
+    const identifier = setTimeout(() => {
+      console.log("form check");
+      setFormIsValid(
+        enteredEmail.includes("@") && enteredPassword.trim().length > 6
+      );
+    }, 500);
+
+    // clean up 함수
+    // 실행될 때마다 이전에 설정된 타이머를 지운다.
+    return () => {
+      console.log("clean up");
+      clearTimeout(identifier);
+    };
   }, [enteredEmail, enteredPassword]);
 
   const emailChangeHandler = (event) => {
