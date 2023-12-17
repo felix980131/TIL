@@ -11,7 +11,7 @@ const Home = (props) => {
   return (
     <Card className={classes.home}>
       <h1>Welcome back!</h1>
-      <Button onClick={AuthContext.onLogout}>LogOut</Button>
+      <Button onClick={contextData.onLogout}>LogOut</Button>
     </Card>
   );
 };
