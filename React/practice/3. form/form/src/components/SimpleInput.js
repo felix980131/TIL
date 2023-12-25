@@ -1,37 +1,33 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 const SimpleInput = (props) => {
-  const nameInputRef = useRef();
   const [enteredName, setEnterName] = useState("");
-  const [enteredNameIsValid, setEnteredNameIsValid] = useState(false);
   const [enterNameTouched, setEnterNameTouched] = useState(false);
+
+  const enteredNameIsValid = enteredName.trim() !== "";
+  const nameInputIsInvalid = !enteredNameIsValid && enterNameTouched;
 
   const nameInputChangeHanlder = (event) => {
     setEnterName(event.target.value);
   };
 
-  const formSubmissionHandler = (evnet) => {
-    evnet.preventDefault();
+  const formSubmissionHandler = (event) => {
+    event.preventDefault();
 
     setEnterNameTouched(true);
 
-    if (enteredName === "") {
-      setEnteredNameIsValid(false);
+    if (!enteredNameIsValid) {
       return;
     }
-    setEnteredNameIsValid(true);
-
     console.log(enteredName);
-    const enteredValue = nameInputRef.current.value;
-    console.log(enteredValue);
-
-    // 바닐라 자바스크립트 코드로 DOM을 조작하는 것은 지양해야 한다.
-    // nameInputRef.current.value = "";
 
     setEnterName("");
+    setEnterNameTouched(false);
   };
 
-  const nameInputIsInvalid = !enteredNameIsValid && enterNameTouched;
+  const nameInputBlurHandler = () => {
+    setEnterNameTouched(true);
+  };
 
   const nameInputClasses = nameInputIsInvalid
     ? "form-control invalid"
@@ -42,10 +38,10 @@ const SimpleInput = (props) => {
       <div className={nameInputClasses}>
         <label htmlFor="name">Your Name</label>
         <input
-          ref={nameInputRef}
           type="text"
           id="name"
           onChange={nameInputChangeHanlder}
+          onBlur={nameInputBlurHandler}
           value={enteredName}
         />
         {nameInputIsInvalid && (
