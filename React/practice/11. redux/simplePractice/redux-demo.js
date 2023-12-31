@@ -2,9 +2,19 @@ const redux = require("redux");
 
 // 리듀서 함수
 const counterReducer = (state = { counter: 0 }, action) => {
-  return {
-    counter: state.counter + 1,
-  };
+  if (action.type === "increment") {
+    return {
+      counter: state.counter + 1,
+    };
+  }
+
+  if (action.type === "decrement") {
+    return {
+      counter: state.counter - 1,
+    };
+  }
+
+  return state;
 };
 
 // 리덕스 저장소 생성
@@ -23,3 +33,5 @@ store.subscribe(counterSubscriber);
 // 액션 발송
 store.dispatch({ type: "increment" });
 store.dispatch({ type: "increment" });
+store.dispatch({ type: "decrement" });
+store.dispatch({ type: "decrement" });
