@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import classes from "./Counter.module.css";
+import { counterActions } from "../store/index";
 
 const Counter = () => {
   // useSelector는 리덕스 저장소를 자동으로 구독해준다.
@@ -9,19 +10,19 @@ const Counter = () => {
   const dispatch = useDispatch();
 
   const incrementHandler = () => {
-    dispatch({ type: "increment", value: 1 });
+    dispatch(counterActions.increment(1));
   };
 
   const increment5Handler = () => {
-    dispatch({ type: "increment", value: 5 });
+    dispatch(counterActions.increment(5));
   };
 
   const decrementHandler = () => {
-    dispatch({ type: "decrement" });
+    dispatch(counterActions.decrement());
   };
 
   const toggleCounterHandler = () => {
-    dispatch({ type: "toggle" });
+    dispatch(counterActions.toggle());
   };
 
   return (
