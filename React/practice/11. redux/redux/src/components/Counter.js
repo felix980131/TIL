@@ -4,8 +4,8 @@ import { counterActions } from "../store/index";
 
 const Counter = () => {
   // useSelector는 리덕스 저장소를 자동으로 구독해준다.
-  const counter = useSelector((state) => state.counter);
-  const showCounter = useSelector((state) => state.showCounter);
+  const counter = useSelector((state) => state.counter.counter);
+  const showCounter = useSelector((state) => state.counter.showCounter);
 
   const dispatch = useDispatch();
 
