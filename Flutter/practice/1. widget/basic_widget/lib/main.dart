@@ -11,28 +11,58 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        // 앱 상단 바
         appBar: AppBar(
-          title: Text('This is App bar!'), // 상단바 타이틀
-          centerTitle: false, // 타이틀 가운데 정렬의 적용 유무
-          // 오른쪽에 위치할 위젯
-          actions: [
-            IconButton(
-                onPressed: () {
-                  print("clicked!");
-                },
-                icon: Icon(Icons.home)),
-            Icon(Icons.play_arrow)
-          ],
+          title: Text('Study to Container'),
         ),
-        // 앱의 기본적인 내용
-        body: Text('Hello World!'),
-        // 플로팅 버튼
-        floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              print("clicked floationg action button!");
-            },
-            child: Icon(Icons.bug_report)),
+        body: CustomContainer(),
+      ),
+    );
+  }
+}
+
+class CustomContainer extends StatelessWidget {
+  const CustomContainer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 300, // 가로 크기
+      height: 300, // 세로 크기
+      padding: EdgeInsets.all(10), // 패딩값
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 50), // 마진값
+
+      // 데코레이션
+      decoration: BoxDecoration(
+          color: Colors.red.shade100, // 색상
+          // 테두리 선
+          border: Border.all(
+            color: Colors.black,
+            width: 5,
+          ),
+          // 라운드
+          borderRadius: BorderRadius.circular(20),
+          // 그림자
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.3), // 그림자 색
+              offset: Offset(6, 6), // 그림자 위치
+              blurRadius: 10, // 블러값
+              spreadRadius: 10, // 스프레드값
+            ),
+            BoxShadow(
+              color: Colors.red.withOpacity(0.3), // 그림자 색
+              offset: Offset(-6, -6), // 그림자 위치
+              blurRadius: 10, // 블러값
+              spreadRadius: 10, // 스프레드값
+            ),
+          ]),
+      child: Center(
+        child: Container(
+          color: Colors.yellow.shade100, // 색상
+          padding: EdgeInsets.all(15), // 패딩값
+          margin: EdgeInsets.symmetric(horizontal: 10, vertical: 50), // 마진값
+          child: Text("Hello Container"),
+        ),
       ),
     );
   }
