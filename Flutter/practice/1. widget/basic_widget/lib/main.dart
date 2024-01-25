@@ -10,50 +10,41 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Widget을 겹겹히 쌓아 배치'),
+      home: SafeArea(
+        child: Scaffold(
+          body: ConstrainsWidget(),
         ),
-        body: Body(),
       ),
     );
   }
 }
 
-class Body extends StatelessWidget {
-  const Body({super.key});
+class ConstrainsWidget extends StatelessWidget {
+  const ConstrainsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          width: 500,
-          height: 500,
-          color: Colors.black,
-        ),
-        Container(
-          width: 400,
-          height: 400,
+    return Container(
+      width: 500,
+      height: 500,
+      color: Colors.blue,
+      child: UnconstrainedBox(
+        child: Container(
+          width: 300,
+          height: 700,
           color: Colors.red,
         ),
-        Align(
-          alignment: Alignment.bottomRight,
-          child: Container(
-            width: 300,
-            height: 300,
-            color: Colors.blue,
-          ),
-        ),
-        Positioned(
-          bottom: 0,
-          child: Container(
-            width: 200,
-            height: 200,
-            color: Colors.green,
-          ),
-        ),
-      ],
+      ),
+      // child: Center(
+      //   child: Container(
+      //     // 제약사항
+      //     constraints: BoxConstraints(
+      //         minHeight: 200, minWidth: 200, maxHeight: 250, maxWidth: 250),
+      //     width: 300,
+      //     height: 300,
+      //     color: Colors.red,
+      //   ),
+      // ),
     );
   }
 }
