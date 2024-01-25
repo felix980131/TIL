@@ -12,39 +12,86 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       home: SafeArea(
         child: Scaffold(
-          body: ConstrainsWidget(),
+          body: Body(),
         ),
       ),
     );
   }
 }
 
-class ConstrainsWidget extends StatelessWidget {
-  const ConstrainsWidget({super.key});
+class Body extends StatelessWidget {
+  const Body({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 500,
-      height: 500,
-      color: Colors.blue,
-      child: UnconstrainedBox(
+    return Column(
+      children: [
+        ExampleStateless(),
+        ExampleStateful(
+          index: 3,
+        ),
+      ],
+    );
+  }
+}
+
+class ExampleStateless extends StatelessWidget {
+  ExampleStateless({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        color: Colors.red,
+      ),
+    );
+  }
+}
+
+class ExampleStateful extends StatefulWidget {
+  final int index;
+
+  const ExampleStateful({super.key, required this.index});
+
+  @override
+  State<ExampleStateful> createState() => _ExampleStatefulState();
+}
+
+class _ExampleStatefulState extends State<ExampleStateful> {
+  late int _index;
+
+  // build 실행 전 실행되는 함수
+  @override
+  void initState() {
+    super.initState();
+    _index = widget.index;
+  }
+
+  // 위젯이 종료되면 실행되는 함수
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: GestureDetector(
+        onTap: () {
+          // 위젯을 다시 빌드
+          setState(() {
+            if (_index == 5) {
+              _index = 0;
+              return;
+            }
+            _index++;
+          });
+        },
         child: Container(
-          width: 300,
-          height: 700,
-          color: Colors.red,
+          color: Colors.blue,
+          child: Center(child: Text(_index.toString())),
         ),
       ),
-      // child: Center(
-      //   child: Container(
-      //     // 제약사항
-      //     constraints: BoxConstraints(
-      //         minHeight: 200, minWidth: 200, maxHeight: 250, maxWidth: 250),
-      //     width: 300,
-      //     height: 300,
-      //     color: Colors.red,
-      //   ),
-      // ),
     );
   }
 }
