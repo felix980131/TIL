@@ -12,7 +12,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Widget을 비율로 배치'),
+          title: Text('Widget을 겹겹히 쌓아 배치'),
         ),
         body: Body(),
       ),
@@ -25,49 +25,34 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Stack(
       children: [
         Container(
-          width: double.infinity,
-          height: 200,
+          width: 500,
+          height: 500,
+          color: Colors.black,
+        ),
+        Container(
+          width: 400,
+          height: 400,
           color: Colors.red,
         ),
-        Expanded(
+        Align(
+          alignment: Alignment.bottomRight,
           child: Container(
+            width: 300,
+            height: 300,
             color: Colors.blue,
-            height: 100,
           ),
         ),
-        Flexible(
+        Positioned(
+          bottom: 0,
           child: Container(
-            color: Colors.yellow,
-            height: 100,
+            width: 200,
+            height: 200,
+            color: Colors.green,
           ),
         ),
-        // Flexible(
-        //   flex: 1,
-        //   child: Container(
-        //     color: Colors.red,
-        //   ),
-        // ),
-        // Flexible(
-        //   flex: 2,
-        //   child: Container(
-        //     color: Colors.blue,
-        //   ),
-        // ),
-        // Flexible(
-        //   flex: 3,
-        //   child: Container(
-        //     color: Colors.yellow,
-        //   ),
-        // ),
-        // Flexible(
-        //   flex: 4,
-        //   child: Container(
-        //     color: Colors.brown,
-        //   ),
-        // ),
       ],
     );
   }
