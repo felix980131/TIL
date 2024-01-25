@@ -25,41 +25,61 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center, // 주축 정렬
-      children: [
-        Row(
-          mainAxisSize: MainAxisSize.max, // 주축 사이즈
-          mainAxisAlignment: MainAxisAlignment.center, // 주축 정렬
-          crossAxisAlignment: CrossAxisAlignment.center, // 횡축 정렬
-          children: [
-            Container(
-              width: 100,
-              height: 100,
-              color: Colors.red,
-              child: Text("Container1"),
-            ),
-            Container(
-              width: 100,
-              height: 100,
-              color: Colors.green,
-              child: Text("Container2"),
-            ),
-            Container(
-              width: 100,
-              height: 100,
-              color: Colors.blue,
-              child: Text("Container3"),
-            )
-          ],
-        ),
-        Container(
-          width: 300,
-          height: 100,
-          color: Colors.grey,
-          child: Text("Container4"),
-        ),
-      ],
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal, // 스크롤 방향
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start, // 주축 정렬
+        children: [
+          Container(
+            width: 100,
+            height: 100,
+            color: Colors.grey,
+            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+          ),
+          Container(
+            width: 100,
+            height: 100,
+            color: Colors.grey,
+            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+          ),
+          Container(
+            width: 100,
+            height: 100,
+            color: Colors.grey,
+            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+          ),
+          Container(
+            width: 100,
+            height: 100,
+            color: Colors.grey,
+            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+          ),
+          Container(
+            width: 100,
+            height: 100,
+            color: Colors.grey,
+            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+          ),
+          Container(
+            width: 100,
+            height: 100,
+            color: Colors.grey,
+            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+          ),
+          Container(
+            width: 100,
+            height: 100,
+            color: Colors.grey,
+            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+          ),
+          Container(
+            width: 100,
+            height: 100,
+            color: Colors.grey,
+            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+          ),
+        ],
+      ),
     );
   }
 }
