@@ -12,7 +12,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Widget을 상하로 배치'),
+          title: Text('Widget을 좌우로 배치'),
         ),
         body: Body(),
       ),
@@ -26,8 +26,8 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      child: Column(
+      height: double.infinity,
+      child: Row(
         mainAxisSize: MainAxisSize.max, // 주축 사이즈
         mainAxisAlignment: MainAxisAlignment.center, // 주축 정렬
         crossAxisAlignment: CrossAxisAlignment.end, // 횡축 정렬
