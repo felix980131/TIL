@@ -5,85 +5,65 @@ void main() {
   runApp(const MainApp());
 }
 
-class MainApp extends StatelessWidget {
+class MainApp extends StatefulWidget {
   const MainApp({super.key});
+
+  @override
+  State<MainApp> createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp> {
+  late int index;
+
+  @override
+  void initState() {
+    super.initState();
+    index = 0;
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Flutter의 Callback"),
+          title: Text("Flutter에서 화면 이동하기"),
         ),
-        body: Body(),
-      ),
-    );
-  }
-}
-
-class Body extends StatelessWidget {
-  const Body({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return TestWidget();
-  }
-}
-
-class TestWidget extends StatefulWidget {
-  const TestWidget({super.key});
-
-  @override
-  State<TestWidget> createState() => _TestWidgetState();
-}
-
-class _TestWidgetState extends State<TestWidget> {
-  int value = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text("Count ${value}"),
-          TestButton(addCounter, addCounter10),
-        ],
+        body: homeBody(),
+        bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: "home",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: "search",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: "user",
+            ),
+          ],
+          currentIndex: index,
+          onTap: (newIndex) {
+            setState(() {
+              index = newIndex;
+            });
+          },
+        ),
       ),
     );
   }
 
-  void addCounter() {
-    setState(() {
-      ++value;
-    });
-  }
-
-  void addCounter10(int addValue) {
-    setState(() {
-      value = value + addValue;
-    });
-  }
-}
-
-class TestButton extends StatelessWidget {
-  const TestButton(this.callback, this.callback10, {super.key});
-
-  final VoidCallback callback; // 반환값이 없는 함수
-  final Function callback10; // 반환값이 있는 함수
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        callback.call();
-        callback10.call(10);
-      },
-      child: Container(
-          color: Colors.yellow,
-          padding: EdgeInsetsDirectional.all(50),
-          margin: EdgeInsets.symmetric(vertical: 50),
-          child: Text("Up Count")),
-    );
+  Widget homeBody() {
+    switch (index) {
+      case 1:
+        return Text("1");
+      case 2:
+        return Text("2");
+      case 0:
+      default:
+        return Text("0");
+    }
   }
 }
