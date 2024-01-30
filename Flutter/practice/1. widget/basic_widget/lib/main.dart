@@ -1,8 +1,15 @@
 import 'package:basic_widget/screen/new_page.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 void main() {
-  runApp(MaterialApp(home: const MainApp()));
+  runApp(MaterialApp.router(
+    routerConfig: GoRouter(initialLocation: "/", routes: [
+      GoRoute(path: "/", name: "home", builder: (context, _) => MainApp()),
+      GoRoute(path: "/new", name: "new", builder: (context, _) => NewPage()),
+      GoRoute(path: "/new1", name: "new1", builder: (context, _) => NewPage2()),
+    ]),
+  ));
 }
 
 class MainApp extends StatelessWidget {
@@ -17,10 +24,7 @@ class MainApp extends StatelessWidget {
       body: Center(
         child: TextButton(
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const NewPage()),
-            );
+            context.pushNamed("new");
           },
           child: Text("Go to Page"),
         ),
