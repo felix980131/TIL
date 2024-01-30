@@ -15,7 +15,7 @@ class GameBody extends StatefulWidget {
 
 class _GameBodyState extends State<GameBody> {
   late bool isDone;
-  late InputType? _userInput;
+  InputType? _userInput;
   late InputType _cpuInput;
 
   @override
@@ -33,7 +33,12 @@ class _GameBodyState extends State<GameBody> {
       children: [
         Expanded(child: CpuInput(isDone: isDone, cpuInput: _cpuInput)),
         Expanded(child: GameResult(isDone: isDone)),
-        Expanded(child: UserInput(isDone: isDone, callback: setUserInput)),
+        Expanded(
+            child: UserInput(
+          isDone: isDone,
+          callback: setUserInput,
+          userInput: _userInput,
+        )),
       ],
     );
   }
