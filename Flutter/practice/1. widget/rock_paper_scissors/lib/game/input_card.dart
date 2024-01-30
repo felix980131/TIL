@@ -7,7 +7,7 @@ class InputCard extends StatelessWidget {
   const InputCard({
     super.key,
     required this.child,
-    required this.callback,
+    this.callback,
   });
 
   @override
