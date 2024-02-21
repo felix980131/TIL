@@ -2,9 +2,9 @@ package com.felix.learnspringframework.game;
 
 public class GameRunner {
     //    private final MarioGame game;
-    private final SuperContraGame game;
+    private final GamingConsole game;
 
-    public GameRunner(SuperContraGame game) {
+    public GameRunner(GamingConsole game) {
         this.game = game;
     }
 
