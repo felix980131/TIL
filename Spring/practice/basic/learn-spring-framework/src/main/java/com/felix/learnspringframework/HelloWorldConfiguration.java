@@ -30,6 +30,11 @@ public class HelloWorldConfiguration {
     }
 
     @Bean
+    public Person person2(String name, int age) {
+        return new Person(name, age);
+    }
+
+    @Bean(name = "customAddress")
     public Address address() {
         return new Address("Baker Street", "London");
     }

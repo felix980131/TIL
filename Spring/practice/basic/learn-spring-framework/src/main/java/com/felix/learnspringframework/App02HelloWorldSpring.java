@@ -13,6 +13,8 @@ public class App02HelloWorldSpring {
         System.out.println(context.getBean("name"));
         System.out.println(context.getBean("age"));
         System.out.println(context.getBean("person"));
-        System.out.println(context.getBean("address"));
+        System.out.println(context.getBean("customAddress"));
+        System.out.println(context.getBean(Address.class)); // Address.class 타입의 빈을 가져옴
+        System.out.println(context.getBean("person2"));
     }
 }
