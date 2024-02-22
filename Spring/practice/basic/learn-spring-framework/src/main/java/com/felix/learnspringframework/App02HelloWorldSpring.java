@@ -2,6 +2,8 @@ package com.felix.learnspringframework;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.util.Arrays;
+
 public class App02HelloWorldSpring {
     public static void main(String[] args) {
         // 1. Spring context 실행
@@ -16,5 +18,8 @@ public class App02HelloWorldSpring {
         System.out.println(context.getBean("customAddress"));
         System.out.println(context.getBean(Address.class)); // Address.class 타입의 빈을 가져옴
         System.out.println(context.getBean("person2"));
+
+        // Spring이 관리하는 빈 출력하기
+        Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
     }
 }
