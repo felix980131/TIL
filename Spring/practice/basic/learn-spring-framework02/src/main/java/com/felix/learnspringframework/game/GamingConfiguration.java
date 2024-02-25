@@ -1,8 +1,5 @@
-package com.felix.learnspringframework;
+package com.felix.learnspringframework.game;
 
-import com.felix.learnspringframework.game.GameRunner;
-import com.felix.learnspringframework.game.GamingConsole;
-import com.felix.learnspringframework.game.PacmanGame;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
