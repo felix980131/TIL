@@ -1,5 +1,8 @@
 package com.felix.learnspringframework.game;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class GameRunner {
     //    private final MarioGame game;
     private final GamingConsole game;
