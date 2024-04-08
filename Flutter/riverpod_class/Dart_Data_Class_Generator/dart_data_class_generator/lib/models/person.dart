@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class Person {
   final int id;
   final String name;
@@ -8,9 +10,6 @@ class Person {
     required this.name,
     required this.email,
   });
-
-  @override
-  String toString() => 'Person(id: $id, name: $name, email: $email)';
 
   Person copyWith({
     int? id,
@@ -23,4 +22,40 @@ class Person {
       email: email ?? this.email,
     );
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'email': email,
+    };
+  }
+
+  factory Person.fromMap(Map<String, dynamic> map) {
+    return Person(
+      id: map['id']?.toInt() ?? 0,
+      name: map['name'] ?? '',
+      email: map['email'] ?? '',
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory Person.fromJson(String source) => Person.fromMap(json.decode(source));
+
+  @override
+  String toString() => 'Person(id: $id, name: $name, email: $email)';
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is Person &&
+        other.id == id &&
+        other.name == name &&
+        other.email == email;
+  }
+
+  @override
+  int get hashCode => id.hashCode ^ name.hashCode ^ email.hashCode;
 }
