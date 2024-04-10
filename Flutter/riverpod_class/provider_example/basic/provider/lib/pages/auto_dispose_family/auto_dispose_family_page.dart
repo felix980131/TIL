@@ -10,6 +10,9 @@ class AutoDisposeFamilyPage extends ConsumerWidget {
     final helloJohn = ref.watch(autoDisposeFamilyHelloProvider('john'));
     final helloJane = ref.watch(autoDisposeFamilyHelloProvider('jane'));
 
+    ref.watch(counterProvider(const Counter(count: 0)));
+    ref.watch(counterProvider(const Counter(count: 0)));
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('FamilyProvider'),
