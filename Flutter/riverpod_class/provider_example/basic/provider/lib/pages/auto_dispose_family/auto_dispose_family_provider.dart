@@ -1,4 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'auto_dispose_family_provider.g.dart';
 
 class Counter {
   final int count;
@@ -28,11 +31,20 @@ final counterProvider = Provider.autoDispose.family<int, Counter>(
   },
 );
 
-final autoDisposeFamilyHelloProvider =
-    Provider.autoDispose.family<String, String>((ref, name) {
+// final autoDisposeFamilyHelloProvider =
+//     Provider.autoDispose.family<String, String>((ref, name) {
+//   ref.onDispose(() {
+//     print("[autoDisposeFamilyHelloProvider $name] disposed");
+//   });
+
+//   return "$name Hello";
+// });
+
+@riverpod
+String autoDisposeFamilyHello(AutoDisposeFamilyHelloRef ref, String there) {
   ref.onDispose(() {
-    print("[autoDisposeFamilyHelloProvider $name] disposed");
+    print("[autoDisposeFamilyHelloProvider $there] disposed");
   });
 
-  return "$name Hello";
-});
+  return "$there Hello";
+}
