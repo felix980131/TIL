@@ -9,10 +9,18 @@ class UserListPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final userList = ref.watch(userListProvider);
+    print(userList);
 
     return Scaffold(
         appBar: AppBar(
           title: const Text('User List'),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  ref.invalidate(userListProvider);
+                },
+                icon: const Icon(Icons.refresh))
+          ],
         ),
         // body: switch (userList) {
         //   AsyncData(value: final users) => ListView.separated(
@@ -41,27 +49,34 @@ class UserListPage extends ConsumerWidget {
         //     ),
         // });
         body: userList.when(
+            skipLoadingOnRefresh: false,
             data: (users) {
-              return ListView.separated(
-                itemCount: users.length,
-                separatorBuilder: (context, index) {
-                  return const Divider();
-                },
-                itemBuilder: (context, index) {
-                  final user = users[index];
+              return RefreshIndicator(
+                onRefresh: () async => ref.invalidate(userListProvider),
+                color: Colors.red,
+                child: ListView.separated(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  itemCount: users.length,
+                  separatorBuilder: (context, index) {
+                    return const Divider();
+                  },
+                  itemBuilder: (context, index) {
+                    final user = users[index];
 
-                  return GestureDetector(
-                    onTap: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (_) {
-                        return UserDetailPage(userId: user.id);
-                      }));
-                    },
-                    child: ListTile(
-                        leading: CircleAvatar(child: Text(user.id.toString())),
-                        title: Text(user.name)),
-                  );
-                },
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (_) {
+                          return UserDetailPage(userId: user.id);
+                        }));
+                      },
+                      child: ListTile(
+                          leading:
+                              CircleAvatar(child: Text(user.id.toString())),
+                          title: Text(user.name)),
+                    );
+                  },
+                ),
               );
             },
             // 에러시 렌더링
