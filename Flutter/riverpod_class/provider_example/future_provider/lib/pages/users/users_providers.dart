@@ -54,10 +54,12 @@ FutureOr<List<User>> userList(UserListRef ref) async {
 @riverpod
 FutureOr<User> userDetail(UserDetailRef ref, int id) async {
   ref.onDispose(() {
-    print("[userDetailProvider] disposed");
+    print("[userDetailProvider($id)] disposed");
   });
 
   final response = await ref.watch(dioProvider).get('/users/$id');
+
+  ref.keepAlive(); // 데이터 캐싱
 
   final user = User.fromJson(response.data);
 
