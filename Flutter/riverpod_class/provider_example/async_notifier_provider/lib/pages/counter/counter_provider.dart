@@ -1,40 +1,41 @@
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-class Counter extends AsyncNotifier<int> {
+part 'counter_provider.g.dart';
+
+@Riverpod(keepAlive: true)
+class Counter extends _$Counter {
   @override
-  FutureOr<int> build() async {
+  FutureOr<int> build(int initialValue) async {
     ref.onDispose(() {
       print("[CounterProvier] disposed");
     });
     await waitSecond();
-    return 0;
+
+    return initialValue;
   }
 
   Future<void> waitSecond() => Future.delayed(const Duration(seconds: 1));
 
   Future<void> increment() async {
     state = const AsyncLoading();
-    try {
+
+    state = await AsyncValue.guard(() async {
       await waitSecond();
 
-      state = AsyncData(state.value! + 1);
-    } catch (error, stackTrace) {
-      state = AsyncError(error, stackTrace);
-    }
+      return state.value! + 1;
+    });
   }
 
   Future<void> decrement() async {
     state = const AsyncLoading();
-    try {
+
+    state = await AsyncValue.guard(() async {
       await waitSecond();
 
-      state = AsyncData(state.value! - 1);
-    } catch (error, stackTrace) {
-      state = AsyncError(error, stackTrace);
-    }
+      return state.value! - 1;
+    });
   }
 }
-
-final counterProvider = AsyncNotifierProvider<Counter, int>(Counter.new);

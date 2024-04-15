@@ -7,7 +7,7 @@ class CounterPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final counter = ref.watch(counterProvider);
+    final counter = ref.watch(counterProvider(3));
     print(counter);
 
     return Scaffold(
@@ -32,14 +32,14 @@ class CounterPage extends ConsumerWidget {
                       FloatingActionButton(
                         heroTag: 'decrement',
                         onPressed: () {
-                          ref.read(counterProvider.notifier).decrement();
+                          ref.read(counterProvider(3).notifier).decrement();
                         },
                         child: const Icon(Icons.remove),
                       ),
                       FloatingActionButton(
                         heroTag: 'increment',
                         onPressed: () {
-                          ref.read(counterProvider.notifier).increment();
+                          ref.read(counterProvider(3).notifier).increment();
                         },
                         child: const Icon(Icons.add),
                       )
@@ -59,7 +59,7 @@ class CounterPage extends ConsumerWidget {
                     const SizedBox(height: 20),
                     OutlinedButton(
                         onPressed: () {
-                          ref.invalidate(counterProvider);
+                          ref.invalidate(counterProvider(3));
                         },
                         child: Text(
                           "Refresh",
