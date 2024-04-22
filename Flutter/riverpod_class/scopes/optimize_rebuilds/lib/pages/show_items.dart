@@ -9,18 +9,27 @@ class ShowItems extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final items = ref.watch(itemListProvider);
 
+    // return ListView(
+    //   children: [for (final item in items) EachItem(item: item)],
+    // );
     return ListView(
-      children: [for (final item in items) EachItem(item: item)],
+      children: [
+        for (final item in items)
+          ProviderScope(
+              overrides: [currentItemProvider.overrideWithValue(item)],
+              child: const EachItem())
+      ],
     );
   }
 }
 
 class EachItem extends ConsumerWidget {
-  final String item;
-  const EachItem({super.key, required this.item});
+  const EachItem({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final item = ref.watch(currentItemProvider);
+
     print('building $item');
 
     return ListTile(
@@ -36,3 +45,25 @@ class EachItem extends ConsumerWidget {
     );
   }
 }
+
+// class EachItem extends ConsumerWidget {
+//   final String item;
+//   const EachItem({super.key, required this.item});
+
+//   @override
+//   Widget build(BuildContext context, WidgetRef ref) {
+//     print('building $item');
+
+//     return ListTile(
+//       title: Text(
+//         item,
+//         style: const TextStyle(fontSize: 18),
+//       ),
+//       trailing: IconButton(
+//           onPressed: () {
+//             ref.read(itemListProvider.notifier).deleteItem(item);
+//           },
+//           icon: const Icon(Icons.delete)),
+//     );
+//   }
+// }
