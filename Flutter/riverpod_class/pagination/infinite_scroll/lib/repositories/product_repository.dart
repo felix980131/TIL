@@ -6,19 +6,14 @@ import 'dio_provider.dart';
 
 part 'product_repository.g.dart';
 
-const limit = 10;
-int totalProducts = 0;
-int totalPages = 1;
+const limit = 20;
 
 class ProductRepository {
   final Dio dio;
 
   ProductRepository(this.dio);
 
-  Future<List<Product>> getProducts(
-    int page, {
-    CancelToken? cancelToken,
-  }) async {
+  Future<List<Product>> getProducts(int page) async {
     try {
       final Response response = await dio.get(
         '/products',
@@ -26,7 +21,6 @@ class ProductRepository {
           'limit': limit,
           'skip': (page - 1) * limit,
         },
-        cancelToken: cancelToken,
       );
 
       if (response.statusCode != 200) {
@@ -34,10 +28,6 @@ class ProductRepository {
       }
 
       final List productList = response.data['products'];
-
-      totalProducts = response.data['total'];
-
-      totalPages = totalProducts ~/ limit + (totalProducts % limit > 0 ? 1 : 0);
 
       final products = [
         for (final product in productList) Product.fromJson(product)
