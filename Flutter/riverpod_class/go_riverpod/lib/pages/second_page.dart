@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_riverpod/config/router/route_name.dart';
+import 'package:go_router/go_router.dart';
 
 class SecondPage extends StatelessWidget {
   const SecondPage({Key? key}) : super(key: key);
@@ -16,7 +18,10 @@ class SecondPage extends StatelessWidget {
             const Text('Second Page'),
             const SizedBox(height: 10),
             FilledButton(
-              onPressed: () {},
+              onPressed: () {
+                GoRouter.of(context).goNamed(RouteNames.secondDetails,
+                    pathParameters: {'id': '1'});
+              },
               child: const Text('View Second Details'),
             ),
           ],
